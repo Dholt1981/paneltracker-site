@@ -3,31 +3,897 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Panel Tracker Support</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Methodist Panel Tracker — the field tool electricians use to locate, document, and manage electrical panels at IU Health Methodist Hospital." />
+  <meta name="theme-color" content="#0b3d6b" />
+  <title>Methodist Panel Tracker — Field Tool for Hospital Electricians</title>
   <style>
+    :root {
+      --navy: #0b3d6b;
+      --navy-deep: #082c4d;
+      --teal: #0e7c86;
+      --amber: #f5a623;
+      --amber-deep: #d98b0c;
+      --ink: #1a2530;
+      --slate: #5b6b7c;
+      --mist: #f6f9fc;
+      --line: #e3e9f0;
+      --white: #ffffff;
+      --radius: 16px;
+      --shadow-sm: 0 2px 8px rgba(11, 61, 107, 0.08);
+      --shadow-md: 0 12px 32px rgba(11, 61, 107, 0.12);
+      --shadow-lg: 0 24px 60px rgba(11, 61, 107, 0.18);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: sans-serif;
-      background: #f5f5f5;
-      text-align: center;
-      padding: 3rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--ink);
+    }
+    .brand:hover { text-decoration: none; }
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
+      background: linear-gradient(150deg, var(--navy), var(--teal));
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-links a {
+      color: var(--slate);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover { color: var(--navy); text-decoration: none; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 11px 20px;
+      border-radius: 999px;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(150deg, var(--amber), var(--amber-deep));
+      color: #3a2600;
+      box-shadow: 0 8px 20px rgba(245, 166, 35, 0.35);
+    }
+    .btn-ghost {
+      background: var(--white);
+      color: var(--navy);
+      border: 1.5px solid var(--line);
+    }
+    .btn-ghost:hover { border-color: var(--navy); }
+
+    @media (max-width: 720px) {
+      .nav-links a:not(.btn) { display: none; }
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      background:
+        radial-gradient(900px 500px at 88% -10%, rgba(14, 124, 134, 0.16), transparent),
+        radial-gradient(700px 460px at 4% 110%, rgba(245, 166, 35, 0.14), transparent),
+        var(--mist);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 48px;
+      align-items: center;
+      padding: 76px 0 84px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(14, 124, 134, 0.1);
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      border-radius: 999px;
+    }
+    .eyebrow .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--teal);
     }
     h1 {
-      color: #333;
+      font-size: clamp(2.2rem, 4.6vw, 3.3rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin: 20px 0 16px;
+      color: var(--navy-deep);
     }
-    p {
-      color: #666;
+    h1 .accent { color: var(--teal); }
+    .lede {
+      font-size: 1.13rem;
+      color: var(--slate);
+      max-width: 520px;
     }
-    a {
-      color: #007aff;
-      text-decoration: none;
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+    .hero-cta .btn { padding: 14px 26px; font-size: 1rem; }
+    .trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      margin-top: 32px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--slate);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .trust-item svg { flex-shrink: 0; }
+
+    .hero-art {
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+    .hero-art svg {
+      width: 100%;
+      height: auto;
+      max-width: 520px;
+      filter: drop-shadow(var(--shadow-lg));
+    }
+
+    @media (max-width: 880px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 52px 0 60px;
+        text-align: center;
+      }
+      .lede { margin: 0 auto; }
+      .hero-cta, .trust { justify-content: center; }
+      .eyebrow { margin: 0 auto; }
+      .hero-art { order: -1; }
+    }
+
+    /* ---------- Section shells ---------- */
+    section { padding: 84px 0; }
+    .section-head {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 52px;
+    }
+    .section-head h2 {
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      letter-spacing: -0.02em;
+      color: var(--navy-deep);
+    }
+    .section-head p {
+      color: var(--slate);
+      font-size: 1.05rem;
+      margin-top: 12px;
+    }
+    .kicker {
+      display: block;
+      color: var(--amber-deep);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    /* ---------- Features ---------- */
+    .features { background: var(--white); }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 30px 24px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: transparent;
+    }
+    .feat-icon {
+      width: 52px; height: 52px;
+      border-radius: 13px;
+      background: linear-gradient(150deg, rgba(11, 61, 107, 0.1), rgba(14, 124, 134, 0.14));
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+    }
+    .feature-card h3 {
+      font-size: 1.08rem;
+      color: var(--navy-deep);
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      color: var(--slate);
+      font-size: 0.95rem;
+    }
+    @media (max-width: 880px) {
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ---------- Workflow ---------- */
+    .workflow { background: var(--mist); border-block: 1px solid var(--line); }
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      counter-reset: step;
+    }
+    .step {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 32px 26px;
+      position: relative;
+    }
+    .step-num {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+    }
+    .step h3 { font-size: 1.1rem; color: var(--navy-deep); margin-bottom: 6px; }
+    .step p { color: var(--slate); font-size: 0.95rem; }
+    @media (max-width: 760px) {
+      .step-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ---------- GridIQ teaser ---------- */
+    .gridiq {
+      background:
+        radial-gradient(620px 320px at 84% -20%, rgba(245, 166, 35, 0.28), transparent),
+        radial-gradient(520px 300px at 8% 130%, rgba(14, 124, 134, 0.32), transparent),
+        linear-gradient(150deg, #0d2c4a, #061d33);
+      color: var(--white);
+      text-align: center;
+    }
+    .gridiq-inner {
+      max-width: 660px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .soon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245, 166, 35, 0.16);
+      border: 1px solid rgba(245, 166, 35, 0.5);
+      color: var(--amber);
+      font-weight: 800;
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 999px;
+    }
+    .gridiq h2 {
+      font-size: clamp(2.6rem, 6vw, 4rem);
+      letter-spacing: -0.03em;
+      margin: 22px 0 6px;
+      background: linear-gradient(120deg, #ffffff, var(--amber));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .gridiq .gridiq-sub {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #cfe1ec;
+      margin-bottom: 14px;
+    }
+    .gridiq .gridiq-joke {
+      color: rgba(255, 255, 255, 0.62);
+      font-size: 1rem;
+      max-width: 540px;
+    }
+    .gridiq .gridiq-joke em { color: var(--amber); font-style: normal; font-weight: 700; }
+    .gridiq .meter {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 28px;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .meter .track {
+      width: 200px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+    }
+    .meter .fill {
+      display: block;
+      height: 100%;
+      width: 64%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--teal), var(--amber));
+    }
+
+    /* ---------- FAQ ---------- */
+    .faq { background: var(--white); }
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--white);
+      overflow: hidden;
+      transition: box-shadow 0.15s ease;
+    }
+    details[open] { box-shadow: var(--shadow-sm); }
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 20px 22px;
+      font-weight: 700;
+      color: var(--navy-deep);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary .chev {
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+      color: var(--teal);
+    }
+    details[open] summary .chev { transform: rotate(180deg); }
+    details .answer {
+      padding: 0 22px 20px;
+      color: var(--slate);
+    }
+
+    /* ---------- Support / contact ---------- */
+    .support {
+      background: linear-gradient(150deg, var(--navy), var(--navy-deep));
+      color: var(--white);
+    }
+    .support .section-head h2 { color: var(--white); }
+    .support .section-head p { color: rgba(255, 255, 255, 0.72); }
+    .support .kicker { color: var(--amber); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .contact-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: var(--radius);
+      padding: 30px 26px;
+      transition: background 0.15s ease;
+    }
+    .contact-card:hover { background: rgba(255, 255, 255, 0.1); }
+    .contact-card .feat-icon {
+      background: rgba(245, 166, 35, 0.18);
+      margin-bottom: 16px;
+    }
+    .contact-card h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .contact-card p { color: rgba(255, 255, 255, 0.72); font-size: 0.95rem; margin-bottom: 14px; }
+    .contact-card a.link-out {
+      font-weight: 700;
+      color: var(--amber);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    @media (max-width: 620px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background: var(--navy-deep);
+      color: rgba(255, 255, 255, 0.6);
+      padding: 40px 0;
+      font-size: 0.9rem;
+    }
+    .foot {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .foot-links { display: flex; gap: 22px; flex-wrap: wrap; }
+    .foot-links a { color: rgba(255, 255, 255, 0.78); font-weight: 600; }
+    .foot-brand { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.85); font-weight: 700; }
+    .disclaimer {
+      margin-top: 18px;
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.4);
+      max-width: 720px;
     }
   </style>
 </head>
 <body>
-  <h1>Panel Tracker</h1>
-  <p>Need help or have questions?</p>
-  <p>Email: <a href="mailto:dholt25@yahoo.com">dholt25@yahoo.com</a></p>
-  <p>GitHub Repo: <a href="https://github.com/Dholt1981/paneltracker-site">View on GitHub</a></p>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" fill="#f5a623" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>Methodist Panel Tracker</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#workflow">How it works</a>
+        <a href="#gridiq">GridIQ</a>
+        <a href="#faq">FAQ</a>
+        <a href="#support" class="btn btn-primary">Get Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== Hero ===== -->
+    <div class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="dot"></span> Built for IU Health Methodist Hospital</span>
+          <h1>Find any electrical panel <span class="accent">in seconds</span> — right from your phone.</h1>
+          <p class="lede">
+            Methodist Panel Tracker is the field tool electricians rely on to
+            locate, document, and manage every electrical panel across the
+            hospital campus — no binders, no guesswork.
+          </p>
+          <div class="hero-cta">
+            <a href="#support" class="btn btn-primary">
+              Get Support
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="#3a2600" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#features" class="btn btn-ghost">See what it does</a>
+          </div>
+          <div class="trust">
+            <span class="trust-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 6v6c0 5 3.8 8.5 9 10 5.2-1.5 9-5 9-10V6l-9-4Z" fill="#0e7c86"/><path d="m8.5 12 2.5 2.5L16 9" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Notes stored securely
+            </span>
+            <span class="trust-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 18a4 4 0 0 1 0-8 6 6 0 0 1 11.6-2A4.5 4.5 0 0 1 18 18H6Z" fill="#0b3d6b"/></svg>
+              iCloud sync across devices
+            </span>
+            <span class="trust-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" fill="#f5a623"/><path d="M12 7v5l3.5 2" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Works on every shift
+            </span>
+          </div>
+        </div>
+
+        <!-- Hero illustration: electrician using phone to locate a hospital panel -->
+        <div class="hero-art">
+          <svg viewBox="0 0 600 480" role="img" aria-labelledby="heroTitle heroDesc" xmlns="http://www.w3.org/2000/svg">
+            <title id="heroTitle">Electrician using a phone to locate a hospital electrical panel</title>
+            <desc id="heroDesc">A hard-hatted electrician in a safety vest holds a smartphone running Methodist Panel Tracker, with a locator signal pointing to an open electrical panel on a hospital corridor wall.</desc>
+
+            <defs>
+              <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#eef4f9"/>
+                <stop offset="1" stop-color="#dde8f1"/>
+              </linearGradient>
+              <linearGradient id="panelG" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#cfd9e2"/>
+                <stop offset="1" stop-color="#aab8c6"/>
+              </linearGradient>
+              <linearGradient id="phoneScreen" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#0e7c86"/>
+                <stop offset="1" stop-color="#0b3d6b"/>
+              </linearGradient>
+              <radialGradient id="ping" cx="0.5" cy="0.5" r="0.5">
+                <stop offset="0" stop-color="#f5a623" stop-opacity="0.55"/>
+                <stop offset="1" stop-color="#f5a623" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+
+            <!-- backdrop -->
+            <rect x="20" y="20" width="560" height="440" rx="28" fill="url(#wall)"/>
+
+            <!-- hospital ceiling rail + recessed light -->
+            <rect x="20" y="20" width="560" height="40" rx="20" fill="#e3edf4"/>
+            <rect x="250" y="34" width="100" height="13" rx="6" fill="#fff8df"/>
+            <rect x="258" y="37" width="84" height="7" rx="3" fill="#f5e7a8"/>
+
+            <!-- faint medical cross on wall -->
+            <g opacity="0.4">
+              <circle cx="116" cy="138" r="46" fill="#fff"/>
+              <path d="M116 112v52M90 138h52" stroke="#bcd0e0" stroke-width="14" stroke-linecap="round"/>
+            </g>
+
+            <!-- corridor floor -->
+            <path d="M20 384h560v48a28 28 0 0 1-28 28H48a28 28 0 0 1-28-28v-48Z" fill="#cdd8e1"/>
+            <path d="M20 384h560v14H20z" fill="#bcc9d4"/>
+
+            <!-- ===== Electrical panel on the wall ===== -->
+            <g>
+              <!-- open door -->
+              <rect x="356" y="120" width="74" height="150" rx="6" fill="#bdc9d5" stroke="#9aa9b8" stroke-width="2"/>
+              <rect x="364" y="128" width="58" height="134" rx="3" fill="#d6dee6"/>
+              <!-- cabinet body -->
+              <rect x="430" y="116" width="118" height="158" rx="8" fill="url(#panelG)" stroke="#94a4b3" stroke-width="2"/>
+              <rect x="442" y="130" width="94" height="130" rx="4" fill="#e7edf2"/>
+              <!-- breaker rows -->
+              <g fill="#0b3d6b">
+                <rect x="452" y="142" width="34" height="13" rx="3"/>
+                <rect x="492" y="142" width="34" height="13" rx="3"/>
+                <rect x="452" y="162" width="34" height="13" rx="3"/>
+                <rect x="492" y="162" width="34" height="13" rx="3" fill="#f5a623"/>
+                <rect x="452" y="182" width="34" height="13" rx="3"/>
+                <rect x="492" y="182" width="34" height="13" rx="3"/>
+                <rect x="452" y="202" width="34" height="13" rx="3"/>
+                <rect x="492" y="202" width="34" height="13" rx="3"/>
+                <rect x="452" y="222" width="34" height="13" rx="3"/>
+                <rect x="492" y="222" width="34" height="13" rx="3"/>
+              </g>
+              <!-- panel label tag -->
+              <rect x="442" y="244" width="94" height="10" rx="3" fill="#0e7c86"/>
+              <!-- panel ID plate -->
+              <rect x="448" y="100" width="82" height="20" rx="5" fill="#0b3d6b"/>
+              <text x="489" y="114" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">PANEL 3-LB</text>
+            </g>
+
+            <!-- locator ping behind panel -->
+            <circle cx="489" cy="190" r="92" fill="url(#ping)"/>
+
+            <!-- dashed locator beam from phone to panel -->
+            <path d="M255 250 Q360 150 470 175" stroke="#f5a623" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="2 12" fill="none"/>
+            <circle cx="470" cy="175" r="9" fill="none" stroke="#f5a623" stroke-width="3"/>
+            <circle cx="470" cy="175" r="3.4" fill="#f5a623"/>
+
+            <!-- ===== Electrician ===== -->
+            <g>
+              <!-- shadow -->
+              <ellipse cx="180" cy="430" rx="92" ry="16" fill="#000" opacity="0.1"/>
+
+              <!-- legs -->
+              <path d="M150 312h62l-4 112h-20l-8-78-8 78h-20l-2-112Z" fill="#2c3e50"/>
+              <!-- boots -->
+              <path d="M124 422h36v14h-40a4 4 0 0 1-2-12l6-2Z" fill="#1a2530"/>
+              <path d="M188 422h36l6 2a4 4 0 0 1-2 12h-40v-14Z" fill="#1a2530"/>
+
+              <!-- torso: hi-vis safety vest -->
+              <path d="M138 196c0-22 18-36 42-36s44 14 44 36l4 122h-96l6-122Z" fill="#f5a623"/>
+              <!-- vest under-shirt -->
+              <path d="M156 168h48l8 36h-66l10-36Z" fill="#1f3a5c"/>
+              <!-- reflective stripes -->
+              <rect x="142" y="232" width="80" height="9" fill="#e8eef4"/>
+              <rect x="142" y="258" width="80" height="9" fill="#e8eef4"/>
+              <path d="M170 200h10v118h-10z" fill="#e8eef4"/>
+
+              <!-- right arm holding phone up -->
+              <path d="M214 210c20 4 34 18 40 36-6 8-16 12-24 10-12-12-22-26-26-40l10-6Z" fill="#1f3a5c"/>
+              <!-- left arm down -->
+              <path d="M142 208c-14 8-20 26-18 48l16 2c6-18 12-32 14-44l-12-6Z" fill="#1f3a5c"/>
+              <!-- left hand -->
+              <circle cx="134" cy="262" r="11" fill="#e8b58c"/>
+
+              <!-- phone in right hand -->
+              <g transform="rotate(-16 250 252)">
+                <rect x="226" y="214" width="58" height="100" rx="11" fill="#1a2530"/>
+                <rect x="231" y="222" width="48" height="84" rx="6" fill="url(#phoneScreen)"/>
+                <!-- app screen content -->
+                <rect x="237" y="229" width="36" height="6" rx="3" fill="#f5a623"/>
+                <rect x="237" y="241" width="36" height="5" rx="2.5" fill="#ffffff" opacity="0.85"/>
+                <rect x="237" y="251" width="26" height="5" rx="2.5" fill="#ffffff" opacity="0.55"/>
+                <!-- pin marker on screen -->
+                <circle cx="255" cy="277" r="13" fill="#f5a623"/>
+                <path d="M255 270a6 6 0 0 0-6 6c0 4.5 6 11 6 11s6-6.5 6-11a6 6 0 0 0-6-6Z" fill="#fff"/>
+                <circle cx="255" cy="276" r="2.4" fill="#f5a623"/>
+              </g>
+              <!-- right hand gripping phone -->
+              <circle cx="244" cy="244" r="11" fill="#e8b58c"/>
+
+              <!-- neck + head -->
+              <rect x="170" y="146" width="20" height="20" rx="6" fill="#e8b58c"/>
+              <circle cx="180" cy="124" r="30" fill="#f0c19a"/>
+              <!-- ear -->
+              <circle cx="152" cy="126" r="6" fill="#e8b58c"/>
+              <!-- face detail -->
+              <circle cx="172" cy="124" r="2.6" fill="#1a2530"/>
+              <circle cx="190" cy="124" r="2.6" fill="#1a2530"/>
+              <path d="M174 136q6 5 12 0" stroke="#a9764f" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+
+              <!-- hard hat -->
+              <path d="M146 110a34 34 0 0 1 68 0Z" fill="#0e7c86"/>
+              <path d="M140 110h80v9a4 4 0 0 1-4 4h-72a4 4 0 0 1-4-4v-9Z" fill="#0b6770"/>
+              <rect x="176" y="78" width="8" height="34" rx="4" fill="#0b6770"/>
+              <!-- hat front badge -->
+              <path d="M180 90l-5 8h10l-5-8Z" fill="#f5a623"/>
+            </g>
+
+            <!-- floating UI: located confirmation chip -->
+            <g>
+              <rect x="372" y="296" width="166" height="44" rx="22" fill="#fff" stroke="#e3e9f0" stroke-width="1.5"/>
+              <circle cx="396" cy="318" r="13" fill="#0e7c86"/>
+              <path d="m390 318 4 4 8-8" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <text x="416" y="314" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#0b3d6b">Panel located</text>
+              <text x="416" y="329" font-family="Arial, sans-serif" font-size="10" fill="#5b6b7c">Level 3 · West Wing</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Features ===== -->
+    <section id="features" class="features">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Everything in one app</span>
+          <h2>Made for the realities of hospital fieldwork</h2>
+          <p>From mechanical rooms to patient wings, keep accurate panel records with you on every call.</p>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feat-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M6 2h8l4 4v16H6V2Z" fill="#0b3d6b"/><path d="M14 2v4h4" fill="#0e7c86"/><path d="M12 11v6m0 0-3-3m3 3 3-3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Export to PDF</h3>
+            <p>Tap the export icon and turn any panel's notes into a clean PDF — ready for inspections and handoffs.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="3" fill="#0b3d6b"/><circle cx="9" cy="10" r="2.4" fill="#f5a623"/><path d="m5 17 5-5 4 4 3-3 4 4" stroke="#0e7c86" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </div>
+            <h3>Attach field photos</h3>
+            <p>Snap or select images straight into a note, so breaker layouts and labels are documented exactly as found.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M6 19a4 4 0 0 1 0-8 6 6 0 0 1 11.6-2A4.5 4.5 0 0 1 18 19H6Z" fill="#0b3d6b"/><path d="M12 9v6m0 0 2.5-2.5M12 15l-2.5-2.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>iCloud sync</h3>
+            <p>With iCloud Key-Value storage enabled, your notes follow you across iPhone and iPad automatically.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="3" fill="#0b3d6b"/><rect x="8" y="7" width="8" height="2.4" rx="1.2" fill="#f5a623"/><rect x="8" y="12" width="8" height="2.4" rx="1.2" fill="#0e7c86"/><rect x="8" y="17" width="5" height="2.4" rx="1.2" fill="#0e7c86"/></svg>
+            </div>
+            <h3>Local-first storage</h3>
+            <p>Every note and image is saved on-device first — fully available even in basements and dead zones.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Workflow ===== -->
+    <section id="workflow" class="workflow">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Three steps in the field</span>
+          <h2>Locate, document, move on</h2>
+          <p>A workflow built around how electricians actually move through the hospital.</p>
+        </div>
+        <div class="step-grid">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h3>Pull up the panel</h3>
+            <p>Search by panel ID or wing and see its location, circuits, and history before you even arrive.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <h3>Document on-site</h3>
+            <p>Add notes and attach photos of the breaker layout so the record always matches reality.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3>Export &amp; sync</h3>
+            <p>Generate a PDF for the next shift and let iCloud keep every device up to date.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GridIQ teaser ===== -->
+    <section id="gridiq" class="gridiq">
+      <div class="wrap gridiq-inner">
+        <span class="soon-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" fill="#f5a623"/></svg>
+          Coming Soon
+        </span>
+        <h2>GridIQ</h2>
+        <p class="gridiq-sub">The next bright idea from the Panel Tracker family.</p>
+        <p class="gridiq-joke">
+          We'd love to tell you exactly what it does, but the details are locked
+          inside an electrical panel and <em>nobody can find it.</em> If only
+          someone made an app for that&hellip; Stay tuned &mdash; it'll be well
+          worth the <em>amp-icipation.</em>
+        </p>
+        <div class="meter">
+          <span>Hype level</span>
+          <span class="track"><span class="fill"></span></span>
+          <span>Fully charged</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section id="faq" class="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Support</span>
+          <h2>Frequently asked questions</h2>
+          <p>Quick answers to the questions we hear most from the field.</p>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>How do I export panel notes?
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <div class="answer">Tap the export icon in the top-right corner of a panel and select <strong>PDF</strong>. The app builds a formatted document you can share or save.</div>
+          </details>
+          <details>
+            <summary>Can I attach images to notes?
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <div class="answer">Yes. Tap <strong>Select Image</strong> in the note section to attach field photos directly to a panel record.</div>
+          </details>
+          <details>
+            <summary>Are my notes synced across devices?
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <div class="answer">Yes — as long as <strong>iCloud Key-Value storage</strong> is enabled on your devices, notes sync automatically between them.</div>
+          </details>
+          <details>
+            <summary>Where is my data stored?
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <div class="answer">All notes and images are saved <strong>locally on your device</strong> and optionally backed up with iCloud, so they stay available even without a connection.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Support / Contact ===== -->
+    <section id="support" class="support">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">We're here to help</span>
+          <h2>Need a hand or have a feature idea?</h2>
+          <p>Reach out any time — we read every message and bug report.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="feat-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="3" fill="#f5a623"/><path d="m4 7 8 6 8-6" stroke="#0b3d6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </div>
+            <h3>Email support</h3>
+            <p>Questions, account help, or anything that isn't working right — send us a note.</p>
+            <a class="link-out" href="mailto:dholt25@yahoo.com">
+              dholt25@yahoo.com
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="#f5a623" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <div class="contact-card">
+            <div class="feat-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.4-2.2-.300-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2Z" fill="#f5a623"/></svg>
+            </div>
+            <h3>Report a bug</h3>
+            <p>Hit something that sparks? Open a GitHub issue and we'll help you ground it.</p>
+            <a class="link-out" href="https://github.com/Dholt1981/paneltracker-site/issues">
+              Open a GitHub issue
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="#f5a623" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div class="foot-brand">
+          <span class="brand-mark" aria-hidden="true" style="width:32px;height:32px;border-radius:9px;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" fill="#f5a623" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"/></svg>
+          </span>
+          Methodist Panel Tracker
+        </div>
+        <div class="foot-links">
+          <a href="https://dholt1981.github.io/paneltracker-site/privacy">Privacy Policy</a>
+          <a href="https://github.com/Dholt1981/paneltracker-site">GitHub Repository</a>
+          <a href="mailto:dholt25@yahoo.com">Contact</a>
+        </div>
+      </div>
+      <p class="disclaimer">
+        Methodist Panel Tracker is an independent field tool for electricians working at
+        IU Health Methodist Hospital. &copy; <span id="year">2026</span> Methodist Panel Tracker.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
