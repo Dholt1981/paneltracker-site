@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Methodist Panel Tracker — the field tool electricians use to locate, document, and manage electrical panels at IU Health Methodist Hospital." />
+  <meta name="description" content="Holt Field Tools — apps built by an electrician, for the people keeping hospitals powered. Meet Methodist Panel Tracker and the upcoming GridIQ." />
   <meta name="theme-color" content="#0b3d6b" />
-  <title>Methodist Panel Tracker — Field Tool for Hospital Electricians</title>
+  <title>Holt Field Tools — Apps for Hospital Electricians</title>
   <style>
     :root {
       --navy: #0b3d6b;
@@ -26,9 +26,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: var(--ink);
@@ -36,15 +34,9 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
-
     a { color: var(--teal); text-decoration: none; }
     a:hover { text-decoration: underline; }
-
-    .wrap {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
 
     /* ---------- Header ---------- */
     header {
@@ -59,31 +51,36 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 68px;
+      height: 70px;
     }
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 700;
-      font-size: 1.05rem;
+      font-weight: 800;
+      font-size: 1.02rem;
       color: var(--ink);
+      letter-spacing: -0.01em;
     }
     .brand:hover { text-decoration: none; }
     .brand-mark {
-      width: 40px;
-      height: 40px;
-      border-radius: 11px;
+      width: 42px; height: 42px;
+      border-radius: 12px;
       background: linear-gradient(150deg, var(--navy), var(--teal));
       display: grid;
       place-items: center;
       box-shadow: var(--shadow-sm);
     }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
+    .brand-sub {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--slate);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-top: 1px;
     }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
     .nav-links a {
       color: var(--slate);
       font-weight: 600;
@@ -99,6 +96,8 @@
       padding: 11px 20px;
       border-radius: 999px;
       transition: transform 0.12s ease, box-shadow 0.12s ease;
+      border: none;
+      cursor: pointer;
     }
     .btn:hover { text-decoration: none; transform: translateY(-1px); }
     .btn-primary {
@@ -112,16 +111,20 @@
       border: 1.5px solid var(--line);
     }
     .btn-ghost:hover { border-color: var(--navy); }
-
-    @media (max-width: 720px) {
+    .btn-dark {
+      background: var(--navy-deep);
+      color: var(--white);
+    }
+    @media (max-width: 760px) {
       .nav-links a:not(.btn) { display: none; }
+      .brand-sub { display: none; }
     }
 
     /* ---------- Hero ---------- */
     .hero {
       background:
-        radial-gradient(900px 500px at 88% -10%, rgba(14, 124, 134, 0.16), transparent),
-        radial-gradient(700px 460px at 4% 110%, rgba(245, 166, 35, 0.14), transparent),
+        radial-gradient(960px 540px at 88% -10%, rgba(14, 124, 134, 0.18), transparent),
+        radial-gradient(700px 460px at 4% 110%, rgba(245, 166, 35, 0.16), transparent),
         var(--mist);
       border-bottom: 1px solid var(--line);
       overflow: hidden;
@@ -129,9 +132,9 @@
     .hero-grid {
       display: grid;
       grid-template-columns: 1.05fr 1fr;
-      gap: 48px;
+      gap: 56px;
       align-items: center;
-      padding: 76px 0 84px;
+      padding: 80px 0 90px;
     }
     .eyebrow {
       display: inline-flex;
@@ -151,30 +154,30 @@
       background: var(--teal);
     }
     h1 {
-      font-size: clamp(2.2rem, 4.6vw, 3.3rem);
-      line-height: 1.12;
+      font-size: clamp(2.3rem, 4.8vw, 3.5rem);
+      line-height: 1.1;
       letter-spacing: -0.02em;
-      margin: 20px 0 16px;
+      margin: 22px 0 18px;
       color: var(--navy-deep);
     }
     h1 .accent { color: var(--teal); }
     .lede {
-      font-size: 1.13rem;
+      font-size: 1.15rem;
       color: var(--slate);
-      max-width: 520px;
+      max-width: 540px;
     }
     .hero-cta {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-top: 30px;
+      margin-top: 32px;
     }
     .hero-cta .btn { padding: 14px 26px; font-size: 1rem; }
     .trust {
       display: flex;
       flex-wrap: wrap;
       gap: 22px;
-      margin-top: 32px;
+      margin-top: 34px;
     }
     .trust-item {
       display: flex;
@@ -185,7 +188,6 @@
       font-weight: 600;
     }
     .trust-item svg { flex-shrink: 0; }
-
     .hero-art {
       position: relative;
       display: grid;
@@ -194,15 +196,14 @@
     .hero-art svg {
       width: 100%;
       height: auto;
-      max-width: 520px;
+      max-width: 540px;
       filter: drop-shadow(var(--shadow-lg));
     }
-
-    @media (max-width: 880px) {
+    @media (max-width: 900px) {
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 36px;
-        padding: 52px 0 60px;
+        gap: 40px;
+        padding: 56px 0 64px;
         text-align: center;
       }
       .lede { margin: 0 auto; }
@@ -211,15 +212,15 @@
       .hero-art { order: -1; }
     }
 
-    /* ---------- Section shells ---------- */
-    section { padding: 84px 0; }
+    /* ---------- Sections ---------- */
+    section { padding: 88px 0; }
     .section-head {
       text-align: center;
-      max-width: 640px;
-      margin: 0 auto 52px;
+      max-width: 660px;
+      margin: 0 auto 56px;
     }
     .section-head h2 {
-      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
       letter-spacing: -0.02em;
       color: var(--navy-deep);
     }
@@ -238,78 +239,142 @@
       margin-bottom: 10px;
     }
 
-    /* ---------- Features ---------- */
-    .features { background: var(--white); }
-    .feature-grid {
+    /* ---------- Product family cards ---------- */
+    .family { background: var(--white); }
+    .product-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
     }
-    .feature-card {
-      background: var(--white);
+    .product-card {
+      position: relative;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 30px 24px;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+      border-radius: 22px;
+      padding: 36px 34px 32px;
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      overflow: hidden;
     }
-    .feature-card:hover {
+    .product-card:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-md);
       border-color: transparent;
     }
-    .feat-icon {
-      width: 52px; height: 52px;
-      border-radius: 13px;
-      background: linear-gradient(150deg, rgba(11, 61, 107, 0.1), rgba(14, 124, 134, 0.14));
-      display: grid;
-      place-items: center;
-      margin-bottom: 18px;
+    .product-card.live {
+      background:
+        radial-gradient(420px 200px at 100% 0%, rgba(14, 124, 134, 0.14), transparent),
+        var(--white);
     }
-    .feature-card h3 {
-      font-size: 1.08rem;
+    .product-card.soon {
+      background:
+        radial-gradient(420px 200px at 0% 100%, rgba(245, 166, 35, 0.14), transparent),
+        var(--white);
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 999px;
+      align-self: flex-start;
+    }
+    .status-pill.live {
+      background: rgba(14, 124, 134, 0.12);
+      color: var(--teal);
+    }
+    .status-pill.live .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 4px rgba(14, 124, 134, 0.18);
+    }
+    .status-pill.soon {
+      background: rgba(245, 166, 35, 0.14);
+      color: var(--amber-deep);
+    }
+    .product-art {
+      align-self: center;
+      margin: 18px 0 22px;
+    }
+    .product-card h3 {
+      font-size: 1.6rem;
       color: var(--navy-deep);
+      letter-spacing: -0.01em;
       margin-bottom: 8px;
     }
-    .feature-card p {
+    .product-card .tagline {
       color: var(--slate);
-      font-size: 0.95rem;
+      margin-bottom: 18px;
     }
+    .product-card ul {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+    .product-card li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 7px 0;
+      color: var(--ink);
+      font-size: 0.96rem;
+    }
+    .product-card li svg { flex-shrink: 0; margin-top: 4px; }
+    .product-card .card-cta { margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap; }
     @media (max-width: 880px) {
-      .feature-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 520px) {
-      .feature-grid { grid-template-columns: 1fr; }
+      .product-grid { grid-template-columns: 1fr; }
     }
 
-    /* ---------- Workflow ---------- */
-    .workflow { background: var(--mist); border-block: 1px solid var(--line); }
-    .step-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      counter-reset: step;
+    /* ---------- Panel Tracker deep dive ---------- */
+    .panel-deep {
+      background: var(--mist);
+      border-block: 1px solid var(--line);
     }
-    .step {
+    .deep-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .deep-copy h2 {
+      font-size: clamp(1.7rem, 2.8vw, 2.2rem);
+      color: var(--navy-deep);
+      letter-spacing: -0.02em;
+      margin: 10px 0 12px;
+    }
+    .deep-copy p { color: var(--slate); margin-bottom: 22px; }
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 14px;
+    }
+    .feature-mini {
       background: var(--white);
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 32px 26px;
-      position: relative;
+      border-radius: 13px;
+      padding: 18px 18px;
     }
-    .step-num {
-      width: 38px; height: 38px;
-      border-radius: 10px;
-      background: var(--navy);
-      color: var(--white);
-      font-weight: 800;
-      display: grid;
-      place-items: center;
-      margin-bottom: 16px;
+    .feature-mini h4 {
+      font-size: 0.98rem;
+      color: var(--navy-deep);
+      margin: 8px 0 4px;
     }
-    .step h3 { font-size: 1.1rem; color: var(--navy-deep); margin-bottom: 6px; }
-    .step p { color: var(--slate); font-size: 0.95rem; }
-    @media (max-width: 760px) {
-      .step-grid { grid-template-columns: 1fr; }
+    .feature-mini p { font-size: 0.88rem; color: var(--slate); margin: 0; }
+    .deep-art svg {
+      width: 100%;
+      height: auto;
+      max-width: 540px;
+      filter: drop-shadow(var(--shadow-md));
+    }
+    @media (max-width: 900px) {
+      .deep-grid { grid-template-columns: 1fr; }
+      .deep-art { order: -1; text-align: center; }
+      .feature-row { grid-template-columns: 1fr; }
     }
 
     /* ---------- GridIQ teaser ---------- */
@@ -322,7 +387,8 @@
       text-align: center;
     }
     .gridiq-inner {
-      max-width: 660px;
+      max-width: 700px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -342,7 +408,7 @@
       border-radius: 999px;
     }
     .gridiq h2 {
-      font-size: clamp(2.6rem, 6vw, 4rem);
+      font-size: clamp(2.8rem, 6.4vw, 4.4rem);
       letter-spacing: -0.03em;
       margin: 22px 0 6px;
       background: linear-gradient(120deg, #ffffff, var(--amber));
@@ -351,18 +417,18 @@
       color: transparent;
     }
     .gridiq .gridiq-sub {
-      font-size: 1.1rem;
+      font-size: 1.12rem;
       font-weight: 700;
       color: #cfe1ec;
       margin-bottom: 14px;
     }
     .gridiq .gridiq-joke {
-      color: rgba(255, 255, 255, 0.62);
+      color: rgba(255, 255, 255, 0.66);
       font-size: 1rem;
-      max-width: 540px;
+      max-width: 560px;
     }
     .gridiq .gridiq-joke em { color: var(--amber); font-style: normal; font-weight: 700; }
-    .gridiq .meter {
+    .meter {
       display: flex;
       align-items: center;
       gap: 12px;
@@ -386,11 +452,80 @@
       border-radius: 999px;
       background: linear-gradient(90deg, var(--teal), var(--amber));
     }
+    .notify {
+      display: flex;
+      gap: 10px;
+      margin-top: 28px;
+      width: 100%;
+      max-width: 420px;
+    }
+    .notify input {
+      flex: 1;
+      padding: 13px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--white);
+      font-size: 0.95rem;
+      outline: none;
+    }
+    .notify input::placeholder { color: rgba(255, 255, 255, 0.5); }
+    .notify input:focus { border-color: var(--amber); }
+    .notify .btn { padding: 13px 22px; font-size: 0.95rem; }
+
+    /* ---------- Maker ---------- */
+    .maker { background: var(--white); }
+    .maker-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .maker-card {
+      background: linear-gradient(150deg, var(--navy), var(--navy-deep));
+      color: var(--white);
+      border-radius: 22px;
+      padding: 36px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    .maker-card .avatar {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(150deg, var(--teal), var(--amber));
+      display: grid;
+      place-items: center;
+      margin: 0 auto 16px;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--navy-deep);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+    }
+    .maker-card h3 { font-size: 1.3rem; }
+    .maker-card .role {
+      color: var(--amber);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    .maker-card p { color: rgba(255, 255, 255, 0.75); margin-top: 14px; font-size: 0.95rem; }
+    .maker-copy h2 {
+      font-size: clamp(1.7rem, 2.8vw, 2.2rem);
+      color: var(--navy-deep);
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .maker-copy p { color: var(--slate); margin-bottom: 14px; font-size: 1.02rem; }
+    @media (max-width: 900px) {
+      .maker-grid { grid-template-columns: 1fr; }
+    }
 
     /* ---------- FAQ ---------- */
-    .faq { background: var(--white); }
+    .faq { background: var(--mist); border-block: 1px solid var(--line); }
     .faq-list {
-      max-width: 760px;
+      max-width: 780px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -427,7 +562,7 @@
       color: var(--slate);
     }
 
-    /* ---------- Support / contact ---------- */
+    /* ---------- Support ---------- */
     .support {
       background: linear-gradient(150deg, var(--navy), var(--navy-deep));
       color: var(--white);
@@ -439,7 +574,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 22px;
-      max-width: 780px;
+      max-width: 820px;
       margin: 0 auto;
     }
     .contact-card {
@@ -450,9 +585,16 @@
       transition: background 0.15s ease;
     }
     .contact-card:hover { background: rgba(255, 255, 255, 0.1); }
+    .feat-icon {
+      width: 52px; height: 52px;
+      border-radius: 13px;
+      background: linear-gradient(150deg, rgba(11, 61, 107, 0.1), rgba(14, 124, 134, 0.14));
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+    }
     .contact-card .feat-icon {
       background: rgba(245, 166, 35, 0.18);
-      margin-bottom: 16px;
     }
     .contact-card h3 { font-size: 1.1rem; margin-bottom: 6px; }
     .contact-card p { color: rgba(255, 255, 255, 0.72); font-size: 0.95rem; margin-bottom: 14px; }
@@ -471,7 +613,7 @@
     footer {
       background: var(--navy-deep);
       color: rgba(255, 255, 255, 0.6);
-      padding: 40px 0;
+      padding: 44px 0;
       font-size: 0.9rem;
     }
     .foot {
@@ -483,12 +625,12 @@
     }
     .foot-links { display: flex; gap: 22px; flex-wrap: wrap; }
     .foot-links a { color: rgba(255, 255, 255, 0.78); font-weight: 600; }
-    .foot-brand { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.85); font-weight: 700; }
+    .foot-brand { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.9); font-weight: 800; }
     .disclaimer {
       margin-top: 18px;
       font-size: 0.78rem;
       color: rgba(255, 255, 255, 0.4);
-      max-width: 720px;
+      max-width: 760px;
     }
   </style>
 </head>
@@ -499,15 +641,19 @@
     <div class="wrap nav">
       <a class="brand" href="#top">
         <span class="brand-mark" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" fill="#f5a623" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"/>
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+            <path d="M6 4v20M22 4v20M6 14h16" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="m17 6-5 8h4l-2 8 7-12h-5l1-4Z" fill="#f5a623" stroke="#fff" stroke-width="0.8" stroke-linejoin="round"/>
           </svg>
         </span>
-        <span>Methodist Panel Tracker</span>
+        <span>
+          Holt Field Tools
+          <span class="brand-sub">Apps for hospital electricians</span>
+        </span>
       </a>
       <nav class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#workflow">How it works</a>
+        <a href="#products">Apps</a>
+        <a href="#panel-tracker">Panel Tracker</a>
         <a href="#gridiq">GridIQ</a>
         <a href="#faq">FAQ</a>
         <a href="#support" class="btn btn-primary">Get Support</a>
@@ -521,41 +667,40 @@
     <div class="hero">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow"><span class="dot"></span> Built for IU Health Methodist Hospital</span>
-          <h1>Find any electrical panel <span class="accent">in seconds</span> — right from your phone.</h1>
+          <span class="eyebrow"><span class="dot"></span> Built by an electrician, for electricians</span>
+          <h1>Apps for the people <span class="accent">keeping hospitals powered.</span></h1>
           <p class="lede">
-            Methodist Panel Tracker is the field tool electricians rely on to
-            locate, document, and manage every electrical panel across the
-            hospital campus — no binders, no guesswork.
+            Holt Field Tools makes mobile apps for the techs who work behind
+            the breaker doors &mdash; starting at IU Health Methodist Hospital
+            and headed everywhere the lights need to stay on.
           </p>
           <div class="hero-cta">
-            <a href="#support" class="btn btn-primary">
-              Get Support
+            <a href="#panel-tracker" class="btn btn-primary">
+              Meet Panel Tracker
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="#3a2600" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a href="#features" class="btn btn-ghost">See what it does</a>
+            <a href="#gridiq" class="btn btn-ghost">Sneak peek: GridIQ</a>
           </div>
           <div class="trust">
             <span class="trust-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2 3 6v6c0 5 3.8 8.5 9 10 5.2-1.5 9-5 9-10V6l-9-4Z" fill="#0e7c86"/><path d="m8.5 12 2.5 2.5L16 9" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Notes stored securely
+              Made in the field
             </span>
             <span class="trust-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 18a4 4 0 0 1 0-8 6 6 0 0 1 11.6-2A4.5 4.5 0 0 1 18 18H6Z" fill="#0b3d6b"/></svg>
-              iCloud sync across devices
+              iCloud sync
             </span>
             <span class="trust-item">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" fill="#f5a623"/><path d="M12 7v5l3.5 2" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Works on every shift
+              Built for every shift
             </span>
           </div>
         </div>
 
-        <!-- Hero illustration: electrician using phone to locate a hospital panel -->
         <div class="hero-art">
           <svg viewBox="0 0 600 480" role="img" aria-labelledby="heroTitle heroDesc" xmlns="http://www.w3.org/2000/svg">
-            <title id="heroTitle">Electrician using a phone to locate a hospital electrical panel</title>
-            <desc id="heroDesc">A hard-hatted electrician in a safety vest holds a smartphone running Methodist Panel Tracker, with a locator signal pointing to an open electrical panel on a hospital corridor wall.</desc>
+            <title id="heroTitle">Electrician using Panel Tracker to locate a hospital electrical panel</title>
+            <desc id="heroDesc">A hard-hatted electrician in a hi-vis vest stands in a hospital corridor holding a smartphone running the app, a locator beam pointing to an open electrical panel on the wall.</desc>
 
             <defs>
               <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
@@ -576,33 +721,24 @@
               </radialGradient>
             </defs>
 
-            <!-- backdrop -->
             <rect x="20" y="20" width="560" height="440" rx="28" fill="url(#wall)"/>
-
-            <!-- hospital ceiling rail + recessed light -->
             <rect x="20" y="20" width="560" height="40" rx="20" fill="#e3edf4"/>
             <rect x="250" y="34" width="100" height="13" rx="6" fill="#fff8df"/>
             <rect x="258" y="37" width="84" height="7" rx="3" fill="#f5e7a8"/>
 
-            <!-- faint medical cross on wall -->
             <g opacity="0.4">
               <circle cx="116" cy="138" r="46" fill="#fff"/>
               <path d="M116 112v52M90 138h52" stroke="#bcd0e0" stroke-width="14" stroke-linecap="round"/>
             </g>
 
-            <!-- corridor floor -->
             <path d="M20 384h560v48a28 28 0 0 1-28 28H48a28 28 0 0 1-28-28v-48Z" fill="#cdd8e1"/>
             <path d="M20 384h560v14H20z" fill="#bcc9d4"/>
 
-            <!-- ===== Electrical panel on the wall ===== -->
             <g>
-              <!-- open door -->
               <rect x="356" y="120" width="74" height="150" rx="6" fill="#bdc9d5" stroke="#9aa9b8" stroke-width="2"/>
               <rect x="364" y="128" width="58" height="134" rx="3" fill="#d6dee6"/>
-              <!-- cabinet body -->
               <rect x="430" y="116" width="118" height="158" rx="8" fill="url(#panelG)" stroke="#94a4b3" stroke-width="2"/>
               <rect x="442" y="130" width="94" height="130" rx="4" fill="#e7edf2"/>
-              <!-- breaker rows -->
               <g fill="#0b3d6b">
                 <rect x="452" y="142" width="34" height="13" rx="3"/>
                 <rect x="492" y="142" width="34" height="13" rx="3"/>
@@ -615,83 +751,53 @@
                 <rect x="452" y="222" width="34" height="13" rx="3"/>
                 <rect x="492" y="222" width="34" height="13" rx="3"/>
               </g>
-              <!-- panel label tag -->
               <rect x="442" y="244" width="94" height="10" rx="3" fill="#0e7c86"/>
-              <!-- panel ID plate -->
               <rect x="448" y="100" width="82" height="20" rx="5" fill="#0b3d6b"/>
               <text x="489" y="114" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">PANEL 3-LB</text>
             </g>
 
-            <!-- locator ping behind panel -->
             <circle cx="489" cy="190" r="92" fill="url(#ping)"/>
-
-            <!-- dashed locator beam from phone to panel -->
             <path d="M255 250 Q360 150 470 175" stroke="#f5a623" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="2 12" fill="none"/>
             <circle cx="470" cy="175" r="9" fill="none" stroke="#f5a623" stroke-width="3"/>
             <circle cx="470" cy="175" r="3.4" fill="#f5a623"/>
 
-            <!-- ===== Electrician ===== -->
             <g>
-              <!-- shadow -->
               <ellipse cx="180" cy="430" rx="92" ry="16" fill="#000" opacity="0.1"/>
-
-              <!-- legs -->
               <path d="M150 312h62l-4 112h-20l-8-78-8 78h-20l-2-112Z" fill="#2c3e50"/>
-              <!-- boots -->
               <path d="M124 422h36v14h-40a4 4 0 0 1-2-12l6-2Z" fill="#1a2530"/>
               <path d="M188 422h36l6 2a4 4 0 0 1-2 12h-40v-14Z" fill="#1a2530"/>
-
-              <!-- torso: hi-vis safety vest -->
               <path d="M138 196c0-22 18-36 42-36s44 14 44 36l4 122h-96l6-122Z" fill="#f5a623"/>
-              <!-- vest under-shirt -->
               <path d="M156 168h48l8 36h-66l10-36Z" fill="#1f3a5c"/>
-              <!-- reflective stripes -->
               <rect x="142" y="232" width="80" height="9" fill="#e8eef4"/>
               <rect x="142" y="258" width="80" height="9" fill="#e8eef4"/>
               <path d="M170 200h10v118h-10z" fill="#e8eef4"/>
-
-              <!-- right arm holding phone up -->
               <path d="M214 210c20 4 34 18 40 36-6 8-16 12-24 10-12-12-22-26-26-40l10-6Z" fill="#1f3a5c"/>
-              <!-- left arm down -->
               <path d="M142 208c-14 8-20 26-18 48l16 2c6-18 12-32 14-44l-12-6Z" fill="#1f3a5c"/>
-              <!-- left hand -->
               <circle cx="134" cy="262" r="11" fill="#e8b58c"/>
-
-              <!-- phone in right hand -->
               <g transform="rotate(-16 250 252)">
                 <rect x="226" y="214" width="58" height="100" rx="11" fill="#1a2530"/>
                 <rect x="231" y="222" width="48" height="84" rx="6" fill="url(#phoneScreen)"/>
-                <!-- app screen content -->
                 <rect x="237" y="229" width="36" height="6" rx="3" fill="#f5a623"/>
                 <rect x="237" y="241" width="36" height="5" rx="2.5" fill="#ffffff" opacity="0.85"/>
                 <rect x="237" y="251" width="26" height="5" rx="2.5" fill="#ffffff" opacity="0.55"/>
-                <!-- pin marker on screen -->
                 <circle cx="255" cy="277" r="13" fill="#f5a623"/>
                 <path d="M255 270a6 6 0 0 0-6 6c0 4.5 6 11 6 11s6-6.5 6-11a6 6 0 0 0-6-6Z" fill="#fff"/>
                 <circle cx="255" cy="276" r="2.4" fill="#f5a623"/>
               </g>
-              <!-- right hand gripping phone -->
               <circle cx="244" cy="244" r="11" fill="#e8b58c"/>
-
-              <!-- neck + head -->
               <rect x="170" y="146" width="20" height="20" rx="6" fill="#e8b58c"/>
               <circle cx="180" cy="124" r="30" fill="#f0c19a"/>
-              <!-- ear -->
               <circle cx="152" cy="126" r="6" fill="#e8b58c"/>
-              <!-- face detail -->
               <circle cx="172" cy="124" r="2.6" fill="#1a2530"/>
               <circle cx="190" cy="124" r="2.6" fill="#1a2530"/>
               <path d="M174 136q6 5 12 0" stroke="#a9764f" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-
-              <!-- hard hat -->
               <path d="M146 110a34 34 0 0 1 68 0Z" fill="#0e7c86"/>
               <path d="M140 110h80v9a4 4 0 0 1-4 4h-72a4 4 0 0 1-4-4v-9Z" fill="#0b6770"/>
               <rect x="176" y="78" width="8" height="34" rx="4" fill="#0b6770"/>
-              <!-- hat front badge -->
               <path d="M180 90l-5 8h10l-5-8Z" fill="#f5a623"/>
             </g>
 
-            <!-- floating UI: located confirmation chip -->
+            <!-- Panel located chip -->
             <g>
               <rect x="372" y="296" width="166" height="44" rx="22" fill="#fff" stroke="#e3e9f0" stroke-width="1.5"/>
               <circle cx="396" cy="318" r="13" fill="#0e7c86"/>
@@ -699,75 +805,207 @@
               <text x="416" y="314" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#0b3d6b">Panel located</text>
               <text x="416" y="329" font-family="Arial, sans-serif" font-size="10" fill="#5b6b7c">Level 3 · West Wing</text>
             </g>
+
+            <!-- GridIQ coming-soon chip -->
+            <g>
+              <rect x="48" y="296" width="158" height="44" rx="22" fill="#0b3d6b"/>
+              <rect x="58" y="306" width="24" height="24" rx="6" fill="#f5a623"/>
+              <path d="m72 312-5 8h4l-2 6 7-10h-4l0-4Z" fill="#0b3d6b"/>
+              <text x="90" y="314" font-family="Arial, sans-serif" font-size="11" font-weight="800" fill="#f5a623">GRIDIQ</text>
+              <text x="90" y="329" font-family="Arial, sans-serif" font-size="10" fill="#cfe1ec">Coming soon</text>
+            </g>
           </svg>
         </div>
       </div>
     </div>
 
-    <!-- ===== Features ===== -->
-    <section id="features" class="features">
+    <!-- ===== Product family ===== -->
+    <section id="products" class="family">
       <div class="wrap">
         <div class="section-head">
-          <span class="kicker">Everything in one app</span>
-          <h2>Made for the realities of hospital fieldwork</h2>
-          <p>From mechanical rooms to patient wings, keep accurate panel records with you on every call.</p>
+          <span class="kicker">The toolkit</span>
+          <h2>Two apps. One field-tested mission.</h2>
+          <p>Holt Field Tools builds focused mobile apps for hospital electricians &mdash; one is live, one is on the way.</p>
         </div>
-        <div class="feature-grid">
-          <div class="feature-card">
-            <div class="feat-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M6 2h8l4 4v16H6V2Z" fill="#0b3d6b"/><path d="M14 2v4h4" fill="#0e7c86"/><path d="M12 11v6m0 0-3-3m3 3 3-3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="product-grid">
+
+          <!-- Panel Tracker card -->
+          <div class="product-card live">
+            <span class="status-pill live"><span class="dot"></span> Available now</span>
+            <div class="product-art">
+              <svg width="170" height="160" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+                <rect x="56" y="14" width="88" height="152" rx="14" fill="#1a2530"/>
+                <rect x="62" y="22" width="76" height="136" rx="8" fill="#fff"/>
+                <rect x="70" y="32" width="60" height="8" rx="4" fill="#0e7c86"/>
+                <rect x="70" y="46" width="46" height="6" rx="3" fill="#cfd9e2"/>
+                <rect x="70" y="60" width="60" height="40" rx="6" fill="#eef4f9"/>
+                <circle cx="100" cy="80" r="11" fill="#f5a623"/>
+                <path d="M100 73a5 5 0 0 0-5 5c0 4 5 9 5 9s5-5 5-9a5 5 0 0 0-5-5Z" fill="#fff"/>
+                <rect x="70" y="108" width="60" height="6" rx="3" fill="#cfd9e2"/>
+                <rect x="70" y="120" width="40" height="6" rx="3" fill="#cfd9e2"/>
+                <rect x="70" y="138" width="60" height="14" rx="7" fill="#f5a623"/>
+              </svg>
             </div>
-            <h3>Export to PDF</h3>
-            <p>Tap the export icon and turn any panel's notes into a clean PDF — ready for inspections and handoffs.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feat-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="3" fill="#0b3d6b"/><circle cx="9" cy="10" r="2.4" fill="#f5a623"/><path d="m5 17 5-5 4 4 3-3 4 4" stroke="#0e7c86" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            <h3>Methodist Panel Tracker</h3>
+            <p class="tagline">The field tool electricians rely on to locate, document, and manage every electrical panel across the hospital campus.</p>
+            <ul>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#0e7c86"/><path d="m8 12 3 3 5-6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Locate any panel by ID or wing
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#0e7c86"/><path d="m8 12 3 3 5-6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Attach field photos to every note
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#0e7c86"/><path d="m8 12 3 3 5-6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Export clean PDFs for handoffs
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#0e7c86"/><path d="m8 12 3 3 5-6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Local-first storage, iCloud sync
+              </li>
+            </ul>
+            <div class="card-cta">
+              <a href="#panel-tracker" class="btn btn-primary">Learn more</a>
+              <a href="#support" class="btn btn-ghost">Get support</a>
             </div>
-            <h3>Attach field photos</h3>
-            <p>Snap or select images straight into a note, so breaker layouts and labels are documented exactly as found.</p>
           </div>
-          <div class="feature-card">
-            <div class="feat-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M6 19a4 4 0 0 1 0-8 6 6 0 0 1 11.6-2A4.5 4.5 0 0 1 18 19H6Z" fill="#0b3d6b"/><path d="M12 9v6m0 0 2.5-2.5M12 15l-2.5-2.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+          <!-- GridIQ card -->
+          <div class="product-card soon">
+            <span class="status-pill soon">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" fill="#d98b0c"/></svg>
+              Coming Soon
+            </span>
+            <div class="product-art">
+              <svg width="170" height="160" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+                <rect x="20" y="20" width="160" height="140" rx="14" fill="#0d2c4a"/>
+                <g stroke="#1f3d63" stroke-width="1.4">
+                  <path d="M20 60h160M20 100h160M20 140h160M60 20v140M100 20v140M140 20v140"/>
+                </g>
+                <g>
+                  <circle cx="60" cy="60" r="6" fill="#0e7c86"/>
+                  <circle cx="100" cy="100" r="6" fill="#0e7c86"/>
+                  <circle cx="140" cy="60" r="6" fill="#f5a623"/>
+                  <circle cx="140" cy="140" r="6" fill="#0e7c86"/>
+                  <circle cx="60" cy="140" r="6" fill="#f5a623"/>
+                </g>
+                <path d="M60 60h40v40h40M60 60v80h80" stroke="#f5a623" stroke-width="2.2" stroke-dasharray="3 4" fill="none"/>
+                <g>
+                  <circle cx="100" cy="100" r="22" fill="#0d2c4a"/>
+                  <path d="M104 84l-12 18h8l-3 14 13-20h-9l3-12Z" fill="#f5a623"/>
+                </g>
+              </svg>
             </div>
-            <h3>iCloud sync</h3>
-            <p>With iCloud Key-Value storage enabled, your notes follow you across iPhone and iPad automatically.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feat-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="3" fill="#0b3d6b"/><rect x="8" y="7" width="8" height="2.4" rx="1.2" fill="#f5a623"/><rect x="8" y="12" width="8" height="2.4" rx="1.2" fill="#0e7c86"/><rect x="8" y="17" width="5" height="2.4" rx="1.2" fill="#0e7c86"/></svg>
+            <h3>GridIQ</h3>
+            <p class="tagline">The next bright idea in the Holt Field Tools family. What it does is a surprise &mdash; mostly because we can't find the panel where we hid the spec sheet.</p>
+            <ul>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#f5a623"/><path d="M12 7v5l3.5 2" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Smarter than the average breaker
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#f5a623"/><path d="M12 7v5l3.5 2" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Currently under load test
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#f5a623"/><path d="M12 7v5l3.5 2" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Worth every amp of patience
+              </li>
+            </ul>
+            <div class="card-cta">
+              <a href="#gridiq" class="btn btn-dark">Sneak peek</a>
             </div>
-            <h3>Local-first storage</h3>
-            <p>Every note and image is saved on-device first — fully available even in basements and dead zones.</p>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- ===== Workflow ===== -->
-    <section id="workflow" class="workflow">
+    <!-- ===== Panel Tracker deep dive ===== -->
+    <section id="panel-tracker" class="panel-deep">
       <div class="wrap">
-        <div class="section-head">
-          <span class="kicker">Three steps in the field</span>
-          <h2>Locate, document, move on</h2>
-          <p>A workflow built around how electricians actually move through the hospital.</p>
-        </div>
-        <div class="step-grid">
-          <div class="step">
-            <div class="step-num">1</div>
-            <h3>Pull up the panel</h3>
-            <p>Search by panel ID or wing and see its location, circuits, and history before you even arrive.</p>
+        <div class="deep-grid">
+          <div class="deep-copy">
+            <span class="kicker">Flagship app</span>
+            <h2>Methodist Panel Tracker — built behind the breaker door.</h2>
+            <p>
+              Panel Tracker started where every good tool starts: on a real job, in a real
+              hospital, by someone who got tired of hunting through binders to find a
+              single circuit. Today it lives on the phones of the electricians keeping
+              IU Health Methodist Hospital lit up.
+            </p>
+            <div class="feature-row">
+              <div class="feature-mini">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M6 2h8l4 4v16H6V2Z" fill="#0b3d6b"/><path d="M14 2v4h4" fill="#0e7c86"/><path d="M12 11v6m0 0-3-3m3 3 3-3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <h4>Export to PDF</h4>
+                <p>Turn any panel's notes into a clean PDF, ready for inspections and handoffs.</p>
+              </div>
+              <div class="feature-mini">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="3" fill="#0b3d6b"/><circle cx="9" cy="10" r="2.4" fill="#f5a623"/><path d="m5 17 5-5 4 4 3-3 4 4" stroke="#0e7c86" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                <h4>Attach field photos</h4>
+                <p>Snap or attach images so breaker layouts are documented exactly as found.</p>
+              </div>
+              <div class="feature-mini">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M6 19a4 4 0 0 1 0-8 6 6 0 0 1 11.6-2A4.5 4.5 0 0 1 18 19H6Z" fill="#0b3d6b"/><path d="M12 9v6m0 0 2.5-2.5M12 15l-2.5-2.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <h4>iCloud sync</h4>
+                <p>Notes follow you across iPhone and iPad with iCloud Key-Value storage.</p>
+              </div>
+              <div class="feature-mini">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="3" fill="#0b3d6b"/><rect x="8" y="7" width="8" height="2.4" rx="1.2" fill="#f5a623"/><rect x="8" y="12" width="8" height="2.4" rx="1.2" fill="#0e7c86"/><rect x="8" y="17" width="5" height="2.4" rx="1.2" fill="#0e7c86"/></svg>
+                <h4>Local-first</h4>
+                <p>Works in basements and dead zones &mdash; everything saves on-device first.</p>
+              </div>
+            </div>
           </div>
-          <div class="step">
-            <div class="step-num">2</div>
-            <h3>Document on-site</h3>
-            <p>Add notes and attach photos of the breaker layout so the record always matches reality.</p>
-          </div>
-          <div class="step">
-            <div class="step-num">3</div>
-            <h3>Export &amp; sync</h3>
-            <p>Generate a PDF for the next shift and let iCloud keep every device up to date.</p>
+          <div class="deep-art">
+            <svg viewBox="0 0 480 460" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="screenG" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#0e7c86"/>
+                  <stop offset="1" stop-color="#0b3d6b"/>
+                </linearGradient>
+              </defs>
+              <!-- phone shell -->
+              <rect x="90" y="20" width="300" height="420" rx="44" fill="#1a2530"/>
+              <rect x="100" y="30" width="280" height="400" rx="36" fill="#fff"/>
+              <!-- notch -->
+              <rect x="200" y="40" width="80" height="18" rx="9" fill="#1a2530"/>
+              <!-- app header -->
+              <rect x="118" y="74" width="244" height="44" rx="14" fill="#0b3d6b"/>
+              <text x="240" y="100" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">Panel Tracker</text>
+              <!-- panel row 1 -->
+              <g>
+                <rect x="118" y="132" width="244" height="64" rx="12" fill="#f6f9fc" stroke="#e3e9f0"/>
+                <rect x="130" y="146" width="36" height="36" rx="8" fill="#0e7c86"/>
+                <text x="148" y="170" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#fff" text-anchor="middle">3-LB</text>
+                <text x="178" y="158" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#0b3d6b">West Wing · Level 3</text>
+                <text x="178" y="178" font-family="Arial, sans-serif" font-size="11" fill="#5b6b7c">Last updated · today</text>
+                <circle cx="340" cy="164" r="6" fill="#0e7c86"/>
+              </g>
+              <!-- panel row 2 -->
+              <g>
+                <rect x="118" y="206" width="244" height="64" rx="12" fill="#f6f9fc" stroke="#e3e9f0"/>
+                <rect x="130" y="220" width="36" height="36" rx="8" fill="#0b3d6b"/>
+                <text x="148" y="244" font-family="Arial, sans-serif" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">2-EM</text>
+                <text x="178" y="232" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#0b3d6b">ER · Emergency Power</text>
+                <text x="178" y="252" font-family="Arial, sans-serif" font-size="11" fill="#5b6b7c">3 notes · 2 photos</text>
+                <circle cx="340" cy="238" r="6" fill="#f5a623"/>
+              </g>
+              <!-- panel row 3 -->
+              <g>
+                <rect x="118" y="280" width="244" height="64" rx="12" fill="#f6f9fc" stroke="#e3e9f0"/>
+                <rect x="130" y="294" width="36" height="36" rx="8" fill="#0e7c86"/>
+                <text x="148" y="318" font-family="Arial, sans-serif" font-size="12" font-weight="800" fill="#fff" text-anchor="middle">1-MA</text>
+                <text x="178" y="306" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#0b3d6b">Main · MRI Suite</text>
+                <text x="178" y="326" font-family="Arial, sans-serif" font-size="11" fill="#5b6b7c">Last updated · 2d</text>
+                <circle cx="340" cy="312" r="6" fill="#0e7c86"/>
+              </g>
+              <!-- export button -->
+              <rect x="118" y="362" width="244" height="50" rx="25" fill="url(#screenG)"/>
+              <text x="240" y="392" font-family="Arial, sans-serif" font-size="14" font-weight="800" fill="#fff" text-anchor="middle">Export panel PDF</text>
+            </svg>
           </div>
         </div>
       </div>
@@ -781,17 +1019,48 @@
           Coming Soon
         </span>
         <h2>GridIQ</h2>
-        <p class="gridiq-sub">The next bright idea from the Panel Tracker family.</p>
+        <p class="gridiq-sub">The second app in the Holt Field Tools family.</p>
         <p class="gridiq-joke">
-          We'd love to tell you exactly what it does, but the details are locked
-          inside an electrical panel and <em>nobody can find it.</em> If only
-          someone made an app for that&hellip; Stay tuned &mdash; it'll be well
-          worth the <em>amp-icipation.</em>
+          We'd love to spill the details, but they're locked inside an
+          electrical panel and <em>nobody can find it.</em> If only someone
+          made an app for that&hellip; Drop your email below and we'll buzz
+          you the second it's powered up &mdash; well worth the
+          <em>amp-icipation.</em>
         </p>
+        <form class="notify" onsubmit="event.preventDefault();this.querySelector('button').textContent='You’re on the list →';this.querySelector('input').value='';">
+          <input type="email" placeholder="you@hospital.org" aria-label="Email for GridIQ updates" required />
+          <button type="submit" class="btn btn-primary">Notify me</button>
+        </form>
         <div class="meter">
           <span>Hype level</span>
           <span class="track"><span class="fill"></span></span>
           <span>Fully charged</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Maker ===== -->
+    <section class="maker">
+      <div class="wrap maker-grid">
+        <div class="maker-card">
+          <div class="avatar">DH</div>
+          <h3>D. Holt</h3>
+          <div class="role">Electrician &middot; Maker</div>
+          <p>"I built these apps because I needed them on the job. If they save you a single trip back to the truck, that's the whole point."</p>
+        </div>
+        <div class="maker-copy">
+          <span class="kicker">Why Holt Field Tools</span>
+          <h2>Built by an electrician who got tired of hunting for panels.</h2>
+          <p>
+            Hospital electrical systems are big, branching, and unforgiving.
+            Holt Field Tools makes apps narrowly focused on the things that
+            slow techs down &mdash; finding panels, documenting changes,
+            handing work off cleanly between shifts.
+          </p>
+          <p>
+            Every feature ships because it solved a real problem on a real
+            floor. Nothing else.
+          </p>
         </div>
       </div>
     </section>
@@ -821,7 +1090,7 @@
             <summary>Are my notes synced across devices?
               <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </summary>
-            <div class="answer">Yes — as long as <strong>iCloud Key-Value storage</strong> is enabled on your devices, notes sync automatically between them.</div>
+            <div class="answer">Yes &mdash; as long as <strong>iCloud Key-Value storage</strong> is enabled on your devices, notes sync automatically between them.</div>
           </details>
           <details>
             <summary>Where is my data stored?
@@ -829,17 +1098,23 @@
             </summary>
             <div class="answer">All notes and images are saved <strong>locally on your device</strong> and optionally backed up with iCloud, so they stay available even without a connection.</div>
           </details>
+          <details>
+            <summary>When is GridIQ launching?
+              <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <div class="answer">Soon-ish. We promise to flip the breaker on it when it's ready &mdash; drop your email in the GridIQ section and you'll be the first to know.</div>
+          </details>
         </div>
       </div>
     </section>
 
-    <!-- ===== Support / Contact ===== -->
+    <!-- ===== Support ===== -->
     <section id="support" class="support">
       <div class="wrap">
         <div class="section-head">
           <span class="kicker">We're here to help</span>
           <h2>Need a hand or have a feature idea?</h2>
-          <p>Reach out any time — we read every message and bug report.</p>
+          <p>Reach out any time &mdash; we read every message and bug report.</p>
         </div>
         <div class="contact-grid">
           <div class="contact-card">
@@ -847,7 +1122,7 @@
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="3" fill="#f5a623"/><path d="m4 7 8 6 8-6" stroke="#0b3d6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
             </div>
             <h3>Email support</h3>
-            <p>Questions, account help, or anything that isn't working right — send us a note.</p>
+            <p>Questions, account help, or anything that isn't working right &mdash; send us a note.</p>
             <a class="link-out" href="mailto:dholt25@yahoo.com">
               dholt25@yahoo.com
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="#f5a623" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -855,7 +1130,7 @@
           </div>
           <div class="contact-card">
             <div class="feat-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.4-2.2-.300-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2Z" fill="#f5a623"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.7-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2Z" fill="#f5a623"/></svg>
             </div>
             <h3>Report a bug</h3>
             <p>Hit something that sparks? Open a GitHub issue and we'll help you ground it.</p>
@@ -875,19 +1150,26 @@
       <div class="foot">
         <div class="foot-brand">
           <span class="brand-mark" aria-hidden="true" style="width:32px;height:32px;border-radius:9px;">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" fill="#f5a623" stroke="#fff" stroke-width="1.1" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 28 28" fill="none">
+              <path d="M6 4v20M22 4v20M6 14h16" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+              <path d="m17 6-5 8h4l-2 8 7-12h-5l1-4Z" fill="#f5a623" stroke="#fff" stroke-width="0.8" stroke-linejoin="round"/>
+            </svg>
           </span>
-          Methodist Panel Tracker
+          Holt Field Tools
         </div>
         <div class="foot-links">
+          <a href="#panel-tracker">Panel Tracker</a>
+          <a href="#gridiq">GridIQ</a>
+          <a href="#faq">FAQ</a>
           <a href="https://dholt1981.github.io/paneltracker-site/privacy">Privacy Policy</a>
-          <a href="https://github.com/Dholt1981/paneltracker-site">GitHub Repository</a>
+          <a href="https://github.com/Dholt1981/paneltracker-site">GitHub</a>
           <a href="mailto:dholt25@yahoo.com">Contact</a>
         </div>
       </div>
       <p class="disclaimer">
-        Methodist Panel Tracker is an independent field tool for electricians working at
-        IU Health Methodist Hospital. &copy; <span id="year">2026</span> Methodist Panel Tracker.
+        Holt Field Tools builds independent mobile apps for electricians.
+        Methodist Panel Tracker is used at IU Health Methodist Hospital and is
+        not affiliated with IU Health. &copy; <span id="year">2026</span> Holt Field Tools.
       </p>
     </div>
   </footer>
