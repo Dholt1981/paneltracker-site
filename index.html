@@ -1,33 +1,158 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Panel Tracker Support</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #f5f5f5;
-      text-align: center;
-      padding: 3rem;
-    }
-    h1 {
-      color: #333;
-    }
-    p {
-      color: #666;
-    }
-    a {
-      color: #007aff;
-      text-decoration: none;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Tracker — iOS Apps</title>
+  <meta name="description" content="Methodist Panel Tracker and GridIQ Pro — iOS apps for electrical field professionals. Track panels, monitor loads, attach photos, and export reports right from your iPhone." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Panel Tracker</h1>
-  <p>Need help or have questions?</p>
-  <p>Email: <a href="mailto:dholt25@yahoo.com">dholt25@yahoo.com</a></p>
-  <p>GitHub Repo: <a href="https://github.com/Dholt1981/paneltracker-site">View on GitHub</a></p>
+  <nav class="nav">
+    <div class="container">
+      <a href="index.html" class="nav-brand">⚡ Panel Tracker</a>
+      <div class="nav-links">
+        <a href="#apps">Apps</a>
+        <a href="#features">Features</a>
+        <a href="#faq">FAQ</a>
+        <a href="support.html">Support</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <span class="badge">For iPhone &amp; iPad</span>
+    <h1>Field tools that work as hard as you do.</h1>
+    <p>
+      Purpose-built iOS apps for tradespeople and field technicians. Track your
+      work, attach photos on site, and export clean reports — all from your pocket.
+    </p>
+    <div class="btn-group">
+      <a href="#apps" class="btn">Explore the apps</a>
+      <a href="support.html" class="btn btn-secondary">Get support</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Apps ===== -->
+    <section id="apps">
+      <div class="container">
+        <h2 class="section-title">The Apps</h2>
+        <p class="section-subtitle">Built from real time in the field, for the people who do the work.</p>
+        <div class="apps-grid">
+          <article class="app-card">
+            <div class="app-icon">⚡</div>
+            <h3>Methodist Panel Tracker</h3>
+            <p class="tagline">The ultimate field tool for managing electrical panels at IU Health Methodist Hospital.</p>
+            <div class="links">
+              <a href="support.html">Support &rarr;</a>
+              <a href="privacy.html">Privacy</a>
+              <a href="https://github.com/Dholt1981/paneltracker-site">GitHub</a>
+            </div>
+          </article>
+
+          <article class="app-card">
+            <div class="app-icon" style="background:linear-gradient(135deg,#34c759,#0a84ff);">📊</div>
+            <h3>GridIQ Pro</h3>
+            <p class="tagline">Smart load monitoring and analytics for the electrical pro — turn panel data into insight.</p>
+            <div class="links">
+              <a href="support.html">Support &rarr;</a>
+              <a href="privacy.html">Privacy</a>
+              <a href="https://github.com/Dholt1981/paneltracker-site">GitHub</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Features ===== -->
+    <section id="features" style="background:color-mix(in srgb, var(--accent) 4%, var(--bg));">
+      <div class="container">
+        <h2 class="section-title">What you can do</h2>
+        <p class="section-subtitle">Everything you need on the job site, nothing you don't.</p>
+        <div class="features-grid">
+          <div class="feature">
+            <span class="emoji">📝</span>
+            <h4>Track every panel</h4>
+            <p>Keep organized notes on each electrical panel and circuit, right where you need them.</p>
+          </div>
+          <div class="feature">
+            <span class="emoji">📷</span>
+            <h4>Attach field photos</h4>
+            <p>Snap and attach images to any note so the context travels with the record.</p>
+          </div>
+          <div class="feature">
+            <span class="emoji">📤</span>
+            <h4>Export to PDF</h4>
+            <p>Generate clean, shareable PDF reports in a tap — perfect for handoffs and records.</p>
+          </div>
+          <div class="feature">
+            <span class="emoji">☁️</span>
+            <h4>iCloud sync</h4>
+            <p>Your notes stay in sync across devices with iCloud, and backed up automatically.</p>
+          </div>
+          <div class="feature">
+            <span class="emoji">🔒</span>
+            <h4>Private by design</h4>
+            <p>Data is stored locally on your device and only synced to your own iCloud account.</p>
+          </div>
+          <div class="feature">
+            <span class="emoji">⚡</span>
+            <h4>Fast &amp; offline-ready</h4>
+            <p>Works without a signal. Capture everything on site and sync when you're back online.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section id="faq">
+      <div class="container">
+        <h2 class="section-title">Frequently asked questions</h2>
+        <p class="section-subtitle">The quick answers. Need more? Head to the support page.</p>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>How do I export panel notes?</summary>
+            <div class="answer">Tap the export icon 📤 in the top-right corner and select PDF.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Can I attach images to notes?</summary>
+            <div class="answer">Yes — tap "Select Image" in the note section to attach field photos.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Are my notes synced across devices?</summary>
+            <div class="answer">Yes, if iCloud Key-Value storage is enabled on your devices.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Where is my data stored?</summary>
+            <div class="answer">All notes and images are saved locally and optionally backed up with iCloud.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact">
+      <div class="container">
+        <div class="cta">
+          <h2>Need a hand?</h2>
+          <p>Questions, bug reports, or feature ideas — I'd love to hear from you.</p>
+          <div class="btn-group">
+            <a href="mailto:dholt25@yahoo.com" class="btn">Email support</a>
+            <a href="https://github.com/Dholt1981/paneltracker-site/issues" class="btn btn-secondary">Report a bug</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="https://github.com/Dholt1981/paneltracker-site">GitHub</a>
+    </div>
+    <p>&copy; 2026 Panel Tracker. Made for the field. ⚡️</p>
+  </footer>
 </body>
 </html>
